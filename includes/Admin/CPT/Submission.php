@@ -163,6 +163,10 @@ class NF_Admin_CPT_Submission
 
         $columns['sub_date'] = __( 'Date', 'ninja-forms' );
 
+        $columns['form_id'] = __( 'Form ID', 'ninja-forms' );
+
+        $columns['form_title'] = __( 'Form Title', 'ninja-forms' );
+
         return $columns;
     }
 

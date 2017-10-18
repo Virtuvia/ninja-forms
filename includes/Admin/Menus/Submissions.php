@@ -104,6 +104,10 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
 
         $cols[ 'sub_date' ] = __( 'Date', 'ninja-forms' );
 
+        $cols [ 'form_id' ] = __( 'Form ID', 'ninja-foms' );
+
+        $cols [ 'form_title' ] = __( 'Form Title', 'ninja-foms' );
+
         return $cols;
     }
 
@@ -123,6 +127,12 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
                 break;
             case 'sub_date':
                 echo $this->custom_columns_sub_date( $sub );
+                break;
+            case 'form_id':
+                echo $this->custom_columns_form_id( $sub );
+                break;
+            case 'form_title':
+                echo $this->custom_columns_form_title( $sub );
                 break;
             default:
                 echo $this->custom_columns_field( $sub, $column );
@@ -372,12 +382,34 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
     /**
      * Custom Columns: Submission Date
      *
-     * @param $sub
-     * @return mixed
+     * @param NF_Database_Models_Submission $sub
+     * @return string
      */
     private function custom_columns_sub_date( $sub )
     {
         return $sub->get_sub_date( 'm/d/Y h:i A' );
+    }
+
+    /**
+     * Custom Columns: Form ID
+     *
+     * @param NF_Database_Models_Submission $sub
+     * @return int
+     */
+    private function custom_columns_form_id( $sub )
+    {
+        return $sub->get_form_id();
+    }
+
+    /**
+     * Custom Columns: Form Name
+     *
+     * @param NF_Database_Models_Submission $sub
+     * @return string
+     */
+    private function custom_columns_form_title( $sub )
+    {
+        return $sub->get_form_title();
     }
 
     /**
